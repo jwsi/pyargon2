@@ -1,6 +1,15 @@
-# pyargon2
+<p align="center">
+	<picture align="center">
+	    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jwsi/pyargon2/master/docs/static/logo.png">
+	    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jwsi/pyargon2/master/docs/static/logo.png">
+	    <img alt="pyargon2" src="https://raw.githubusercontent.com/jwsi/pyargon2/master/docs/static/logo.png" height="250px">
+	</picture>
+</p>
 
-Simultaneously the simplest and most powerful implementation of Argon2 in Python.
+<p align="center">
+    <strong>Simultaneously the simplest and most powerful implementation of Argon2 in Python</strong><br>
+    Proudly serving the community since 2020
+</p>
 
 ## Installation 
 
