@@ -13,7 +13,9 @@ DEFAULT_FLAGS = lib.ARGON2_FLAG_CLEAR_PASSWORD | lib.ARGON2_FLAG_CLEAR_SECRET
 
 
 @overload
-def hash(password: str, salt: str, pepper: str = ...,
+def hash(password: str, salt: str,
+         *, # Keyword only after this point
+         pepper: str = ...,
          hash_len: int = ...,
          time_cost: int = ...,
          memory_cost: int = ...,
@@ -25,7 +27,9 @@ def hash(password: str, salt: str, pepper: str = ...,
 
 
 @overload
-def hash(password: str, salt: str, pepper: str = ...,
+def hash(password: str, salt: str,
+         *, # Keyword only after this point
+         pepper: str = ...,
          hash_len: int = ...,
          time_cost: int = ...,
          memory_cost: int = ...,
@@ -33,10 +37,11 @@ def hash(password: str, salt: str, pepper: str = ...,
          flags: int = ...,
          variant: str = ...,
          version: int = ...,
-         encoding: Literal["raw"] = "raw") -> bytes: ...
+         encoding: Literal["raw"]) -> bytes: ...
 
 
-def hash(password: str, salt: str, pepper: str = "",
+def hash(password: str, salt: str,
+         pepper: str = "",
          hash_len: int = DEFAULT_HASH_LENGTH,
          time_cost: int = DEFAULT_TIME_COST,
          memory_cost: int = DEFAULT_MEMORY_COST,
@@ -82,7 +87,9 @@ def hash(password: str, salt: str, pepper: str = "",
 
 
 @overload
-def hash_bytes(password: bytes, salt: bytes, pepper: bytes = ...,
+def hash_bytes(password: bytes, salt: bytes,
+               *, # Keyword only after this point
+               pepper: bytes = ...,
                hash_len: int = ...,
                time_cost: int = ...,
                memory_cost: int = ...,
@@ -94,7 +101,9 @@ def hash_bytes(password: bytes, salt: bytes, pepper: bytes = ...,
 
 
 @overload
-def hash_bytes(password: bytes, salt: bytes, pepper: bytes = ...,
+def hash_bytes(password: bytes, salt: bytes,
+               *, # Keyword only after this point
+               pepper: bytes = ...,
                hash_len: int = ...,
                time_cost: int = ...,
                memory_cost: int = ...,
@@ -102,7 +111,7 @@ def hash_bytes(password: bytes, salt: bytes, pepper: bytes = ...,
                flags: int = ...,
                variant: str = ...,
                version: int = ...,
-               encoding: Literal["raw"] = "raw") -> bytes: ...
+               encoding: Literal["raw"]) -> bytes: ...
 
 
 def hash_bytes(password: bytes, salt: bytes, pepper: bytes = b'',
