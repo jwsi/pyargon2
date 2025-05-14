@@ -224,7 +224,7 @@ def __check_params(input_type, password, salt, pepper, hash_len, time_cost, memo
     if type(password) != input_type: raise ValueError('password must be of type ' + input_type.__name__)
     if type(salt) != input_type: raise ValueError('salt must be of type ' + input_type.__name__)
     if type(pepper) != input_type: raise ValueError('pepper must be of type ' + input_type.__name__)
-    if type(hash_len) != int: raise ValueError('pepper must be of type int')
+    if type(hash_len) != int: raise ValueError('hash_len must be of type int')
     if type(time_cost) != int: raise ValueError('time_cost must be of type int')
     if type(memory_cost) != int: raise ValueError('memory_cost must be of type int')
     if type(parallelism) != int: raise ValueError('parallelism must be of type int')
