@@ -1,8 +1,8 @@
 import base64
-
-from ._argon2 import ffi, lib
+from typing import Literal, overload, Union
 
 import pyargon2.classes.errors as errors
+from ._argon2 import ffi, lib
 
 # These parameters should be increased regularly
 DEFAULT_HASH_LENGTH = 32
@@ -10,6 +10,30 @@ DEFAULT_TIME_COST = 620
 DEFAULT_MEMORY_COST = 4096
 DEFAULT_PARALLELISM = 8
 DEFAULT_FLAGS = lib.ARGON2_FLAG_CLEAR_PASSWORD | lib.ARGON2_FLAG_CLEAR_SECRET
+
+
+@overload
+def hash(password: str, salt: str, pepper: str = ...,
+         hash_len: int = ...,
+         time_cost: int = ...,
+         memory_cost: int = ...,
+         parallelism: int = ...,
+         flags: int = ...,
+         variant: str = ...,
+         version: int = ...,
+         encoding: Literal["hex", "b64"] = "hex") -> str: ...
+
+
+@overload
+def hash(password: str, salt: str, pepper: str = ...,
+         hash_len: int = ...,
+         time_cost: int = ...,
+         memory_cost: int = ...,
+         parallelism: int = ...,
+         flags: int = ...,
+         variant: str = ...,
+         version: int = ...,
+         encoding: Literal["raw"] = "raw") -> bytes: ...
 
 
 def hash(password: str, salt: str, pepper: str = "",
@@ -20,7 +44,7 @@ def hash(password: str, salt: str, pepper: str = "",
          flags: int = DEFAULT_FLAGS,
          variant: str = "id",
          version: int = lib.ARGON2_VERSION_NUMBER,
-         encoding: str = "hex") -> str:
+         encoding: str = "hex") -> Union[str, bytes]:
     """
     The string input version of the Argon2 hashing function.
     Implemented based on the definitions in RFC (https://www.ietf.org/id/draft-irtf-cfrg-argon2-10.txt).
@@ -57,6 +81,30 @@ def hash(password: str, salt: str, pepper: str = "",
         return raw_hash
 
 
+@overload
+def hash_bytes(password: bytes, salt: bytes, pepper: bytes = ...,
+               hash_len: int = ...,
+               time_cost: int = ...,
+               memory_cost: int = ...,
+               parallelism: int = ...,
+               flags: int = ...,
+               variant: str = ...,
+               version: int = ...,
+               encoding: Literal["hex", "b64"] = "hex") -> str: ...
+
+
+@overload
+def hash_bytes(password: bytes, salt: bytes, pepper: bytes = ...,
+               hash_len: int = ...,
+               time_cost: int = ...,
+               memory_cost: int = ...,
+               parallelism: int = ...,
+               flags: int = ...,
+               variant: str = ...,
+               version: int = ...,
+               encoding: Literal["raw"] = "raw") -> bytes: ...
+
+
 def hash_bytes(password: bytes, salt: bytes, pepper: bytes = b'',
                hash_len: int = DEFAULT_HASH_LENGTH,
                time_cost: int = DEFAULT_TIME_COST,
@@ -65,7 +113,7 @@ def hash_bytes(password: bytes, salt: bytes, pepper: bytes = b'',
                flags: int = DEFAULT_FLAGS,
                variant: str = "id",
                version: int = lib.ARGON2_VERSION_NUMBER,
-               encoding: str = "hex") -> str:
+               encoding: str = "hex") -> Union[str, bytes]:
     """
     The byte array input version of the Argon2 hashing function.
     Implemented based on the definitions in RFC (https://www.ietf.org/id/draft-irtf-cfrg-argon2-10.txt).

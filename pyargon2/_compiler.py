@@ -69,7 +69,8 @@ ffi.cdef("""
 
 # Define the module name and sources that will be compiled into the extension
 ffi.set_source(
-    "_argon2", "#include <argon2.h>",
+    "pyargon2._argon2",
+    "#include <argon2.h>",
     include_dirs=include_dirs,
     sources=[
         os.path.join(lib_base, path) for path in [
