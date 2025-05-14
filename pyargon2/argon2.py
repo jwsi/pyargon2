@@ -20,7 +20,7 @@ def hash(password: str, salt: str, pepper: str = "",
          flags: int = DEFAULT_FLAGS,
          variant: str = "id",
          version: int = lib.ARGON2_VERSION_NUMBER,
-         encoding: str = 'hex'):
+         encoding: str = "hex") -> str:
     """
     The string input version of the Argon2 hashing function.
     Implemented based on the definitions in RFC (https://www.ietf.org/id/draft-irtf-cfrg-argon2-10.txt).
@@ -65,7 +65,7 @@ def hash_bytes(password: bytes, salt: bytes, pepper: bytes = b'',
                flags: int = DEFAULT_FLAGS,
                variant: str = "id",
                version: int = lib.ARGON2_VERSION_NUMBER,
-               encoding: str = 'hex'):
+               encoding: str = "hex") -> str:
     """
     The byte array input version of the Argon2 hashing function.
     Implemented based on the definitions in RFC (https://www.ietf.org/id/draft-irtf-cfrg-argon2-10.txt).
@@ -104,7 +104,7 @@ def __raw_hash(password: bytes, salt: bytes, pepper: bytes = b'',
                parallelism: int = DEFAULT_PARALLELISM,
                flags: int = DEFAULT_FLAGS,
                variant: str = "id",
-               version: int = lib.ARGON2_VERSION_NUMBER):
+               version: int = lib.ARGON2_VERSION_NUMBER) -> bytes:
     """
     The underlying raw Argon2 hashing function defined in RFC (https://www.ietf.org/id/draft-irtf-cfrg-argon2-10.txt).
     :param password: Password byte array.
